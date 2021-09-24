@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { Composer, Markup, Scenes } from 'telegraf'
+import { Composer, Scenes } from 'telegraf'
 import { WizardContext } from 'telegraf/typings/scenes';
+import { createSimpleMenuButtons } from '../utils/ui';
 import { SCENES } from './model';
 
 const MENU_MESSAGE = `What would you like to do today?`
@@ -8,12 +9,12 @@ const MENU_MESSAGE = `What would you like to do today?`
 const stepHandler = new Composer<Scenes.WizardContext>()
 
 const borrowHandler = async (ctx: WizardContext) => {
-  await ctx.reply('Borrow')
+  await ctx.reply('Which book do you want to borrow?')
   return ctx.wizard.next()
 }
 
 const lendHandler = async (ctx: WizardContext) => {
-  await ctx.reply('Lend')
+  await ctx.reply('Which book do you want to lend?')
   return ctx.wizard.next()
 }
 
@@ -32,15 +33,16 @@ const scene = new Scenes.WizardScene(
   async (ctx) => {
     await ctx.reply(
       MENU_MESSAGE,
-      Markup.inlineKeyboard([
-        Markup.button.callback('Borrow', 'borrow'),
-        Markup.button.callback('Lend', 'lend'),
-      ])
+      createSimpleMenuButtons(
+        ['Borrow a Book', 'borrow'],
+        ['Lend a Book', 'lend']
+      )
     )
     return ctx.wizard.next()
   },
   stepHandler,
   async (ctx) => {
+    await ctx.reply('Thank you')
     return await ctx.scene.leave()
   }
 )
