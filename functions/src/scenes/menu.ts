@@ -40,6 +40,9 @@ const scene = new Scenes.WizardScene(
     return ctx.wizard.next()
   },
   stepHandler,
+  async (ctx) => {
+    return await ctx.scene.leave()
+  }
 )
 
 export default scene
