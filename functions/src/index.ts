@@ -1,20 +1,22 @@
 import * as functions from "firebase-functions";
 import { Telegraf } from "telegraf";
+import { addMiddlewares } from "./bots";
 
+// Init new bot
 const bot = new Telegraf(functions.config().telegram.token, {
 	telegram: { webhookReply: true },
 })
 
 // error handling
-// bot.catch((err, ctx) => {
-// 	functions.logger.error('[Bot] Error', err)
-// 	return ctx.reply(`Ooops, encountered an error for ${ctx.updateType}`, err)
-// })
+// @ts-expect-error
+bot.catch((err, ctx) => {
+	functions.logger.error('[Bot] Error', err)
+  // @ts-ignore
+	return ctx.reply(`Ooops, encountered an error for ${ctx.updateType}`, err)
+})
 
 // initialize the commands
-bot.command('/start', (ctx) => ctx.reply('Hello! Send any message and I will copy it.'))
-// copy every message and send to the user
-bot.on('message', (ctx) => ctx.telegram.sendCopy(ctx.chat.id, ctx.message))
+addMiddlewares(bot)
 
 // handle all telegram updates with HTTPs trigger
 exports.maktabaBot = functions.https.onRequest(async (request, response) => {
