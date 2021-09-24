@@ -1,10 +1,7 @@
 import welcome from "./welcome"
-import { Telegraf } from "telegraf"
+import wizard from "./scenes/wizard"
 
-const bots = [
-  welcome
+export const bots = [
+  welcome,
+  wizard
 ]
-
-export const addMiddlewares = (bot: Telegraf) => {
-  bots.forEach(b => bot.use(b));
-}
