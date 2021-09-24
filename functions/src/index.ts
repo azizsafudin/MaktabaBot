@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
-import { createDefaultBot } from "./utils";
+import { createBot } from "./bot";
 
-const bot = createDefaultBot(functions.config().telegram.token);
+const bot = createBot(functions.config().telegram.token);
 
 // handle all telegram updates with HTTPs trigger
 export const maktabaBot = functions.https.onRequest(async (request, response) => {

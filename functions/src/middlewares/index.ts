@@ -1,7 +1,7 @@
 import welcome from "./welcome"
 
-const bots = [
+const middlewares = [
   welcome,
 ]
 
-export { bots }
+export { middlewares }
