@@ -6,4 +6,4 @@ export const scenes = [
   wizard
 ]
 
-export default { scenes }
+export default scenes

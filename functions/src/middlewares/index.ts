@@ -4,4 +4,4 @@ const middlewares = [
   welcome,
 ]
 
-export { middlewares }
+export default middlewares

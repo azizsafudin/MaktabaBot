@@ -1,8 +1,8 @@
 import { Context, Telegraf } from "telegraf"
 import LocalSession from "telegraf-session-local"
 import { Update } from "telegraf/typings/core/types/typegram"
-import { middlewares } from "./middlewares"
-import { scenes } from "./scenes"
+import middlewares from "./middlewares"
+import scenes from "./scenes"
 import { SCENE_ENTRY_COMMAND } from "./scenes/model"
 import { registerMiddlewares, registerSceneEntrance, registerScenes, registerSession } from "./utils"
 
