@@ -1,7 +1,5 @@
-import menu from "./menu"
+import menu from "./menu";
 
-export const scenes = [
-  menu,
-]
+const scenes = [menu];
 
-export default scenes
+export default scenes;

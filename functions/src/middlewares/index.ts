@@ -1,7 +1,5 @@
-import welcome from "./welcome"
+import welcome from "./welcome";
 
-const middlewares = [
-  welcome,
-]
+const middlewares = [welcome];
 
-export default middlewares
+export default middlewares;
