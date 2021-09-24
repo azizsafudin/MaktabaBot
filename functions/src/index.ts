@@ -19,7 +19,7 @@ bot.catch((err, ctx) => {
 addMiddlewares(bot)
 
 // handle all telegram updates with HTTPs trigger
-exports.maktabaBot = functions.https.onRequest(async (request, response) => {
+export const maktabaBot = functions.https.onRequest(async (request, response) => {
 	functions.logger.log('Incoming message', request.body)
 	return await bot.handleUpdate(request.body, response)
 })
