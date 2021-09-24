@@ -1,7 +1,9 @@
-import { Composer } from "telegraf"; 
+import { Composer } from 'telegraf'; 
 
 const bot = new Composer()
 
-bot.command('/start', (ctx) => ctx.reply('Hello! Welcome to Maktaba Books!'))
+const WELCOME_MESSAGE = 'Hello! Welcome to Maktaba Books! What would you like to do today?'
+
+bot.command('/start', (ctx) => ctx.reply(WELCOME_MESSAGE))
 
 export default bot;

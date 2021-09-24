@@ -15,7 +15,7 @@ stepHandler.use((ctx) =>
   ctx.replyWithMarkdown('Press `Next` button or type /next')
 )
 
-const superWizard = new Scenes.WizardScene(
+const scene = new Scenes.WizardScene(
   SCENES.SUPER_WIZARD,
   async (ctx) => {
     await ctx.reply(
@@ -42,10 +42,4 @@ const superWizard = new Scenes.WizardScene(
   }
 )
 
-
-const bot = new Composer<Scenes.WizardContext>()
-
-const stage = new Scenes.Stage<Scenes.WizardContext>([superWizard])
-bot.use(stage.middleware())
-
-export default bot
+export default scene

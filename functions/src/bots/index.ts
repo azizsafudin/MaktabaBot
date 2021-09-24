@@ -1,7 +1,7 @@
 import welcome from "./welcome"
-import wizard from "./scenes/wizard"
 
-export const bots = [
+const bots = [
   welcome,
-  wizard
 ]
+
+export { bots }
