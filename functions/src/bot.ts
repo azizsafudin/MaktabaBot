@@ -13,6 +13,7 @@ import {
 
 export const createBot = (
   token: string,
+  database: FirebaseFirestore.Firestore,
   options: Partial<Telegraf.Options<Context<Update>>> | undefined = {
     telegram: { webhookReply: true },
   }
@@ -22,6 +23,12 @@ export const createBot = (
   // Add error handling
   bot.catch((err, ctx) => {
     return ctx.reply(`Ooops, encountered an error for ${ctx.updateType}`, err);
+  });
+
+  // Add firestore database to context
+  bot.use((ctx, next) => {
+    ctx.state.db = database;
+    return next();
   });
 
   // Add local session
