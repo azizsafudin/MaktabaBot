@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { Composer, Scenes } from "telegraf";
 import { WizardContext } from "telegraf/typings/scenes";
-import { createSimpleMenuButtons } from "../utils/ui";
-import { SCENES } from "./model";
+import { createSimpleMenuButtons } from "utils/ui";
+import { SCENES } from "model";
 
 const MENU_MESSAGE = "What would you like to do today?";
 

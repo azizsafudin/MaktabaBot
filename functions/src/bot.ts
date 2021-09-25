@@ -1,12 +1,12 @@
 import { Context, Telegraf } from "telegraf";
 import LocalSession from "telegraf-session-local";
 import { Update } from "telegraf/typings/core/types/typegram";
-import middlewares from "./middlewares";
-import scenes from "./scenes";
-import { SCENE_ENTRY_COMMAND } from "./scenes/model";
+import middlewares from "middlewares";
+import scenes from "scenes";
+import { SCENE_ENTRYPOINTS } from "model";
 import {
   registerMiddlewares,
-  registerSceneEntrance,
+  registerSceneEntrypoints,
   registerScenes,
   registerSession,
 } from "./utils";
@@ -56,4 +56,5 @@ const registerDefaultMiddlewares = registerMiddlewares(middlewares);
 
 const registerDefaultScenes = registerScenes(scenes);
 
-const registerDefaultSceneEntrance = registerSceneEntrance(SCENE_ENTRY_COMMAND);
+const registerDefaultSceneEntrance =
+  registerSceneEntrypoints(SCENE_ENTRYPOINTS);

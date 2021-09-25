@@ -19,10 +19,14 @@ export const registerScenes =
     bot.use(stage.middleware());
   };
 
-export const registerSceneEntrance =
-  (sceneCommandMap: Record<string, string>) => (bot: Telegraf<any>) => {
-    for (const [sceneId, command] of Object.entries(sceneCommandMap)) {
-      bot.command(command, async (ctx) => {
+export const registerSceneEntrypoints =
+  (sceneEntryMap: Record<string, string>) => (bot: Telegraf<any>) => {
+    for (const [sceneId, action] of Object.entries(sceneEntryMap)) {
+      bot.command(`/${action}`, async (ctx) => {
+        ctx.scene.enter(sceneId);
+      });
+
+      bot.action(action, async (ctx) => {
         ctx.scene.enter(sceneId);
       });
     }
