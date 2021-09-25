@@ -9,8 +9,8 @@ const db = admin.firestore();
 const bot = createBot(functions.config().telegram.token, db);
 
 // handle all telegram updates with HTTPs trigger
-export const maktabaBot = functions.https.onRequest(
-  async (request, response) => {
+export const maktabaBot = functions
+  .region("asia-southeast1")
+  .https.onRequest(async (request, response) => {
     return await bot.handleUpdate(request.body, response);
-  }
-);
+  });
