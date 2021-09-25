@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "maktaba-books"
-  }
+    "default": "maktaba-dev",
+    "dev": "maktaba-dev",
+    "prod": "maktaba-books-production"
+  },
+  "targets": {}
 }
