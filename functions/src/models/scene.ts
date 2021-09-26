@@ -1,9 +1,18 @@
-export const SCENES = {
-  SUPER_WIZARD: "@WIZARD_SCENE",
-  MAIN_MENU: "@MAIN_MENU",
-};
+// Scene IDs
+export enum SCENES {
+  SUPER_WIZARD = "@WIZARD",
+  MAIN_MENU = "@MAIN_MENU",
+  BORROW = "@BORROW",
+  LEND = "@LEND",
+}
 
-export const SCENE_ENTRYPOINTS = {
-  [SCENES.SUPER_WIZARD]: "wizard",
-  [SCENES.MAIN_MENU]: "menu",
+export enum ACTION {
+  MENU = "menu",
+  BORROW = "borrow",
+}
+
+// command -> scene_id
+export const ACTION_SCENE_MAP = {
+  [ACTION.MENU]: SCENES.MAIN_MENU,
+  // [ACTION.BORROW]: SCENES.BORROW,
 };

@@ -1,7 +1,7 @@
 import logger from "./logger";
 import user from "./user";
-import welcome from "./welcome";
+import start from "./start";
 
-const middlewares = [logger, user, welcome];
+const middlewares = [logger, user, start];
 
 export default middlewares;

@@ -3,7 +3,7 @@ import LocalSession from "telegraf-session-local";
 import { Update } from "telegraf/typings/core/types/typegram";
 import middlewares from "./middlewares";
 import scenes from "./scenes";
-import { SCENE_ENTRYPOINTS } from "./models/scene";
+import { ACTION_SCENE_MAP } from "./models/scene";
 import {
   registerMiddlewares,
   registerSceneEntrypoints,
@@ -21,8 +21,9 @@ export const createBot = (
   const bot = new Telegraf<any>(token, options);
 
   // Add error handling
-  bot.catch((err, ctx) => {
-    return ctx.reply(`Ooops, encountered an error for ${ctx.updateType}`, err);
+  bot.catch(async (err, ctx) => {
+    await ctx.reply(`Ooops, encountered an error for ${ctx.updateType}`);
+    return ctx.reply(`${err}`);
   });
 
   // Add firestore database to context
@@ -34,11 +35,11 @@ export const createBot = (
   // Add local session
   registerDefaultSession(bot);
 
-  // Register all sub-bots
-  registerDefaultMiddlewares(bot);
-
   // Register scenes on a stage
   registerDefaultScenes(bot);
+
+  // Register all sub-bots
+  registerDefaultMiddlewares(bot);
 
   // register scene entrances
   registerDefaultSceneEntrance(bot);
@@ -56,5 +57,4 @@ const registerDefaultMiddlewares = registerMiddlewares(middlewares);
 
 const registerDefaultScenes = registerScenes(scenes);
 
-const registerDefaultSceneEntrance =
-  registerSceneEntrypoints(SCENE_ENTRYPOINTS);
+const registerDefaultSceneEntrance = registerSceneEntrypoints(ACTION_SCENE_MAP);

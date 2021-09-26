@@ -21,7 +21,7 @@ export const registerScenes =
 
 export const registerSceneEntrypoints =
   (sceneEntryMap: Record<string, string>) => (bot: Telegraf<any>) => {
-    for (const [sceneId, action] of Object.entries(sceneEntryMap)) {
+    for (const [action, sceneId] of Object.entries(sceneEntryMap)) {
       bot.command(`/${action}`, async (ctx) => {
         ctx.scene.enter(sceneId);
       });
