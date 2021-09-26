@@ -8,7 +8,7 @@ const LOG_TYPES = {
 };
 
 bot.use((ctx, next) => {
-  info(LOG_TYPES.NEW_MESSAGE, ctx.message);
+  if (ctx.message) info(LOG_TYPES.NEW_MESSAGE, ctx.message);
   return next();
 });
 
