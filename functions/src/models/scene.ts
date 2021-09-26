@@ -7,8 +7,3 @@ export const SCENE_ENTRYPOINTS = {
   [SCENES.SUPER_WIZARD]: "wizard",
   [SCENES.MAIN_MENU]: "menu",
 };
-
-export default {
-  SCENES,
-  SCENE_ENTRYPOINTS,
-};

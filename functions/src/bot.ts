@@ -3,7 +3,7 @@ import LocalSession from "telegraf-session-local";
 import { Update } from "telegraf/typings/core/types/typegram";
 import middlewares from "./middlewares";
 import scenes from "./scenes";
-import { SCENE_ENTRYPOINTS } from "./model";
+import { SCENE_ENTRYPOINTS } from "./models/scene";
 import {
   registerMiddlewares,
   registerSceneEntrypoints,

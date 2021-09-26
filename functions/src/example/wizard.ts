@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { Composer, Markup, Scenes } from "telegraf";
-import { SCENES } from "../model";
+import { SCENES } from "../models/scene";
 
 const stepHandler = new Composer<Scenes.WizardContext>();
 stepHandler.action("next", async (ctx) => {
